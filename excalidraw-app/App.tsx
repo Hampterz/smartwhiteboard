@@ -107,6 +107,7 @@ import {
   exportToExcalidrawPlus,
 } from "./components/ExportToExcalidrawPlus";
 import { TopErrorBoundary } from "./components/TopErrorBoundary";
+import { DrawculatorPlugin } from "./drawculator/DrawculatorPlugin";
 
 import {
   exportToBackend,
@@ -1068,6 +1069,12 @@ const ExcalidrawWrapper = () => {
         </OverwriteConfirmDialog>
         <AppFooter onChange={() => excalidrawAPI?.refresh()} />
         {excalidrawAPI && <AIComponents excalidrawAPI={excalidrawAPI} />}
+        {excalidrawAPI && (
+          <DrawculatorPlugin
+            excalidrawAPI={excalidrawAPI}
+            theme={editorTheme}
+          />
+        )}
 
         <TTDDialogTrigger />
         {isCollaborating && isOffline && (
